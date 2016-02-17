@@ -27,7 +27,7 @@ class PopularUsers extends Component {
         <LanguagePicker
             value={selectedLanguage}
             onChange={this.handleChange}
-            options={['javascript', 'html', 'c#', 'java']}
+            options={['Javascript', 'Ruby', 'Python', 'C', 'C#', 'C++', 'java', 'PHP', 'Objective-C']}
         />
         <p>
           {lastUpdated &&

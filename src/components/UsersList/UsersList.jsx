@@ -1,16 +1,15 @@
 import React, { PropTypes, Component } from 'react';
 import UserItem from './UserItem';
+import styles from './UsersList.scss';
 
 export default class UsersList extends Component {
   render() {
     return (
-      <ul>
+      <ol className={`${styles['follow-list']} clearfix`}>
         {this.props.users.map((user, i) =>
-          <li key={i}>
-            <UserItem {...{ user }} />
-          </li>
+          <UserItem {...{ user }} key={i}/>
         )}
-      </ul>
+      </ol>
     );
   }
 }

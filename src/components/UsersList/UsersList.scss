@@ -1,0 +1,45 @@
+
+.follow-list{
+  list-style-type: none;
+
+  :global {
+    .follow-list-item {
+      float: left;
+      width: 305px;
+      padding-bottom: 20px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .gravatar {
+      display: block;
+      float: left;
+      width: 75px;
+      height: 75px;
+    }
+
+    .follow-list-container {
+      margin-left: 90px;
+    }
+
+    .follow-list-name {
+      margin: 0 0 20px;
+      font-weight: normal;
+      font-size: 20px;
+    }
+
+    .css-truncate.css-truncate-target {
+      max-width: 195px;
+    }
+
+    .user-followers-container {
+      .followers{
+        display: inline-block;
+        .followers-count{
+          font-weight: bolder;
+        }
+      }
+    }
+  }
+}
