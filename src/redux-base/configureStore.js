@@ -1,17 +1,16 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import promiseMiddleware from './middleware/promiseMiddleware';
 import { syncHistory } from 'react-router-redux';
 import { browserHistory } from 'react-router';
-import reducer from './modules/reducer';
+import rootReducer from './reducers';
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from './sagas';
 import config from 'config';
 
 const syncHistoryMiddleware = syncHistory(browserHistory);
 
 const middlewares = [
   applyMiddleware(
-    thunk,
-    promiseMiddleware,
+    createSagaMiddleware(rootSaga),
     syncHistoryMiddleware
   )
 ];
@@ -24,7 +23,7 @@ if (!config.isProduction) {
 
 export default function configureStore(initialState) {
   const store = createStore(
-    reducer,
+    rootReducer,
     initialState,
     compose(...middlewares)
   );
@@ -34,8 +33,8 @@ export default function configureStore(initialState) {
 
     if (module.hot) {
       // Enable Webpack hot module replacement for reducers
-      module.hot.accept('./modules/reducer', () => {
-        const nextReducer = require('./modules/reducer');
+      module.hot.accept('./reducers', () => {
+        const nextReducer = require('./reducers');
         store.replaceReducer(nextReducer);
       });
     }
