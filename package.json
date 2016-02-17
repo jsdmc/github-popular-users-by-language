@@ -1,5 +1,5 @@
 {
-  "name": "github-languages",
+  "name": "github-popular-users-by-language",
   "version": "1.0.0",
   "description": "Shows most popular github users by selected programming language.",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jsdmc/react-redux-router-crud-boilerplate.git"
+    "url": "https://github.com/jsdmc/github-popular-users-by-language.git"
   },
   "keywords": [
     "react",
@@ -31,9 +31,9 @@
   ],
   "author": "Dmytro Chepunryi",
   "bugs": {
-    "url": "https://github.com/jsdmc/react-redux-router-crud-boilerplate/issues"
+    "url": "https://github.com/jsdmc/github-popular-users-by-language/issues"
   },
-  "homepage": "https://github.com/jsdmc/react-redux-router-crud-boilerplate",
+  "homepage": "https://github.com/jsdmc/github-popular-users-by-language",
   "dependencies": {
     "axios": "^0.9.1",
     "parse-link-header": "^0.4.1",
