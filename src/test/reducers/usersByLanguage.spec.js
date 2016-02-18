@@ -1,6 +1,6 @@
 import expect from 'expect';
-import usersByLanguage from '../../src/redux-base/reducers/usersByLanguage';
-import * as actions from '../../src/redux-base/actions';
+import usersByLanguage from '../../redux-base/reducers/usersByLanguage';
+import * as actions from '../../redux-base/actions';
 
 describe('usersByLanguage reducer', () => {
   it('should handle initial state', () => {

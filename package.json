@@ -8,8 +8,8 @@
     "build": "npm run clean && npm run build:webpack",
     "start": "npm run clean && node devServer.js",
     "lint": "eslint src",
-    "pretest": "eslint test",
-    "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./test/setup.js",
+    "pretest": "eslint src/test",
+    "test": "cross-env NODE_ENV=test cross-env NODE_PATH=./src mocha ./src/test --recursive --compilers js:babel-core/register --require ./src/test/setup.js",
     "test:watch": "npm test -- --watch"
   },
   "repository": {
