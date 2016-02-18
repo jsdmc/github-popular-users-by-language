@@ -4,7 +4,7 @@ import api from 'utils/apiService';
 import parseLinkHeader from 'parse-link-header';
 
 export default function *fetchFollowersCount(login, language) {
-  yield put(actions.requestFollowersCount(login));
+  yield put(actions.requestFollowersCount(login, language));
 
   const apiResult = yield call(api.getUserFollowers, login);
 
@@ -16,8 +16,6 @@ export default function *fetchFollowersCount(login, language) {
   } else {
     followersCount = apiResult.data.length;
   }
-
-  console.log(`User - ${login}, followers - ${followersCount}`);
 
   yield put(actions.receiveFollowersCount(login, language, followersCount));
 }

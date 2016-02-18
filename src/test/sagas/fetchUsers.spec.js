@@ -23,7 +23,7 @@ describe('fetchUsers saga', () => {
 
   let usersSummary;
   it('dispatches RECEIVE_USERS action with short users info', () => {
-    const fakeApiResults = {
+    const apiResponse = {
       data: {
         items: [
           { login: 'user1', avatar_url: 'https://url1', someProp: 4, anotherProp: {} },
@@ -31,7 +31,7 @@ describe('fetchUsers saga', () => {
         ]
       }
     };
-    const result = generator.next(fakeApiResults);
+    const result = generator.next(apiResponse);
     usersSummary = [
       { login: 'user1', avatar_url: 'https://url1' },
       { login: 'user2', avatar_url: 'https://url2' }

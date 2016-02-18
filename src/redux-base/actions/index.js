@@ -38,10 +38,11 @@ export function receiveUsers(language, users) {
   };
 }
 
-export function requestFollowersCount(login) {
+export function requestFollowersCount(login, language) {
   return {
     type: REQUEST_FOLLOWERS_COUNT,
-    login
+    login,
+    language
   };
 }
 
