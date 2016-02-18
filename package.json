@@ -4,7 +4,7 @@
   "description": "Shows most popular github users by selected programming language.",
   "scripts": {
     "clean": "rimraf dist",
-    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js --p",
     "build": "npm run clean && npm run build:webpack",
     "start": "npm run clean && node devServer.js",
     "lint": "eslint src",

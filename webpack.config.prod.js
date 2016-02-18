@@ -5,10 +5,10 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var ROOT_PATH = path.resolve(__dirname);
 
 module.exports = {
-  devtool: 'eval',
+  // devtool: 'eval',
   entry: [
     './src/index.js',
-    './src/index.html'
+    // './src/index.html'
   ],
   resolve : {
     extensions : ['', '.js', '.jsx'],
