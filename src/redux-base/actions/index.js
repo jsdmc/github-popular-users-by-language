@@ -29,12 +29,12 @@ export function requestUsers(language) {
   };
 }
 
-export function receiveUsers(language, users) {
+export function receiveUsers(language, users, receivedAt) {
   return {
     type: RECEIVE_USERS,
     language,
     users,
-    receivedAt: Date.now()
+    receivedAt
   };
 }
 

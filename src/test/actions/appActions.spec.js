@@ -12,20 +12,14 @@ describe('app actions', () => {
   it('receiveUsers should create RECEIVE_USERS action', () => {
     const users = [{ login: 'user1' }, { login: 'user2' }];
     const now = new Date();
-    const action = actions.receiveUsers('python', users);
+    const action = actions.receiveUsers('python', users, now);
 
-    const { receivedAt, ...actionWithoutTime } = action;
-
-    expect(actionWithoutTime).toEqual({
+    expect(action).toEqual({
       type: 'RECEIVE_USERS',
       language: 'python',
-      users
+      users,
+      receivedAt: now
     });
-
-    expect(new Date(action.receivedAt).getMonth()).toEqual(now.getMonth());
-    expect(new Date(action.receivedAt).getDay()).toEqual(now.getDay());
-    expect(new Date(action.receivedAt).getHours()).toEqual(now.getHours());
-    expect(new Date(action.receivedAt).getMinutes()).toEqual(now.getMinutes());
 
   });
 });

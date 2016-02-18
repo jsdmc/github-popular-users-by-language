@@ -2,8 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { selectLanguage, refreshResults } from 'redux-base/actions';
 import { LanguagePicker, UsersList } from 'components';
+import './PopularUsers.scss';
 
-class PopularUsers extends Component {
+export class PopularUsers extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -44,8 +45,8 @@ class PopularUsers extends Component {
             </a>
           }
         </p>
-        {isFetching && users.length === 0 &&
-          <h2>Loading...</h2>
+        {isFetching &&
+          <h2 className="loader">Loading...</h2>
         }
         {!isFetching && users.length === 0 &&
           <h2>Empty.</h2>

@@ -12,8 +12,9 @@ export default function *fetchUsers(language) {
     login: user.login,
     avatar_url: user.avatar_url
   }));
+  const now = Date.now();
 
-  yield put(actions.receiveUsers(language, users));
+  yield put(actions.receiveUsers(language, users, now));
 
   for (let i = 0, len = users.length; i < len; i++) {
     const userName = users[i].login;

@@ -31,12 +31,14 @@ describe('fetchUsers saga', () => {
         ]
       }
     };
+    const now = Date.now();
     const result = generator.next(apiResponse);
     usersSummary = [
       { login: 'user1', avatar_url: 'https://url1' },
       { login: 'user2', avatar_url: 'https://url2' }
     ];
-    expect(result.value).toEqual(put(actions.receiveUsers(language, usersSummary)));
+
+    expect(result.value).toEqual(put(actions.receiveUsers(language, usersSummary, now)));
   });
 
   it('forks fetchFollowersCount process for each user from above request', () => {

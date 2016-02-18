@@ -10,7 +10,7 @@ describe('fetchFollowersCount saga', () => {
   const language = 'javascript';
 
   describe('base scenario', () => {
-   const generator = fetchFollowersCount(login, language);
+    const generator = fetchFollowersCount(login, language);
 
     it('dispatches REQUEST_FOLLOWERS_COUNT action', () => {
       const result = generator.next();
