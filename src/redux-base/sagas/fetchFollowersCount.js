@@ -3,7 +3,7 @@ import * as actions from '../actions';
 import api from 'utils/apiService';
 import parseLinkHeader from 'parse-link-header';
 
-export default function *fetchFollowersCount(login, language) {
+export default function* fetchFollowersCount(login, language) {
   yield put(actions.requestFollowersCount(login, language));
 
   const apiResult = yield call(api.getUserFollowers, login);

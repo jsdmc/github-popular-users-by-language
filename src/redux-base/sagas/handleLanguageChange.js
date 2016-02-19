@@ -2,7 +2,7 @@ import { take, fork } from 'redux-saga/effects';
 import * as actions from '../actions';
 import fetchUsers from './fetchUsers';
 
-export default function *handleLanguageChange(getState) {
+export default function* handleLanguageChange(getState) {
   while (true) {
     const language = getState().selectedLanguage;
 

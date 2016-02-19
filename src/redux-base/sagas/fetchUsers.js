@@ -3,7 +3,7 @@ import * as actions from '../actions';
 import api from 'utils/apiService';
 import fetchFollowersCount from './fetchFollowersCount';
 
-export default function *fetchUsers(language) {
+export default function* fetchUsers(language) {
   yield put(actions.requestUsers(language));
 
   const apiResult = yield call(api.getPopularUsers, language);
