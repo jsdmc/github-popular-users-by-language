@@ -16,9 +16,7 @@ export default function *fetchUsers(language) {
 
   yield put(actions.receiveUsers(language, users, now));
 
-  for (let i = 0, len = users.length; i < len; i++) {
-    const userName = users[i].login;
-
-    yield fork(fetchFollowersCount, userName, language);
+  for (const { login } of users) {
+    yield fork(fetchFollowersCount, login, language);
   }
 }
