@@ -9,8 +9,9 @@
     "start": "npm run clean && node devServer.js",
     "lint": "eslint src",
     "pretest": "eslint src/test",
-    "test": "cross-env NODE_ENV=test cross-env NODE_PATH=./src mocha ./src/test --recursive --compilers js:babel-core/register --require ./src/test/setup.js --require ignore-styles",
-    "test:watch": "npm test -- --watch"
+    "test": "cross-env NODE_ENV=test cross-env NODE_PATH=./src mocha $(find src/test -name '*spec.js') --recursive --compilers js:babel-core/register --require ./src/test/setup.js --require ignore-styles",
+    "test:watch": "npm test -- --watch",
+    "test-server": "webpack-dev-server --config webpack.config.tests.js && open http://localhost:8080/webpack-dev-server/src/test/"
   },
   "repository": {
     "type": "git",
@@ -74,6 +75,7 @@
     "jsdom": "^8.0.4",
     "mocha": "^2.4.5",
     "node-sass": "^3.3.3",
+    "null-loader": "^0.1.1",
     "react-addons-test-utils": "^0.14.7",
     "redux-devtools": "^3.1.1",
     "redux-devtools-dock-monitor": "^1.0.1",
