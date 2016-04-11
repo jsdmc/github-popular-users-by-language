@@ -2,8 +2,8 @@ import expect from 'expect';
 
 import { put, call } from 'redux-saga/effects';
 import api from 'utils/apiService';
-import * as actions from '../../redux-base/actions';
-import fetchFollowersCount from '../../redux-base/sagas/fetchFollowersCount';
+import * as actions from 'redux-base/actions';
+import fetchFollowersCount from 'redux-base/sagas/fetchFollowersCount';
 
 describe('fetchFollowersCount saga', () => {
   const login = 'userName';

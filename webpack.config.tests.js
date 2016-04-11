@@ -1,11 +1,14 @@
 var path = require('path');
 var webpack = require('webpack');
+var argv = require('optimist').argv;
 
 var ROOT_PATH = path.resolve(__dirname);
 
+// value - "mocha!" for tests in browser
+var rootLoader = argv.rootLoader || '';
+
 module.exports = {
-  devtool: 'source-map',
-  entry: 'mocha!./src/test/testRoot.js',
+  entry: rootLoader + './tests/testsRoot.js',
   resolve : {
     extensions : ['', '.js', '.jsx', '.json'],
     alias: {
@@ -24,7 +27,7 @@ module.exports = {
     'text-encoding': 'window'
   },
   output: {
-    path: 'dist/',
+    path: 'tests/build/',
     filename: 'bundle.js',
     publicPath: '/tests'
   },
@@ -43,7 +46,10 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         loaders: ['babel'],
-        include: path.resolve(ROOT_PATH, 'src')
+        include: [
+          path.resolve(ROOT_PATH, 'src'),
+          path.resolve(ROOT_PATH, 'test')
+        ]
       },
       {
         test: /\.scss$/,

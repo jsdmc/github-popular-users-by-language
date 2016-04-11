@@ -1,6 +1,6 @@
 import expect from 'expect';
-import selectedLanguage from '../../redux-base/reducers/selectedLanguage';
-import * as actions from '../../redux-base/actions';
+import selectedLanguage from 'redux-base/reducers/selectedLanguage';
+import * as actions from 'redux-base/actions';
 
 describe('selectedLanguage reducer', () => {
   it('should return "javascript" language as initial state', () => {

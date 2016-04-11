@@ -1,10 +1,10 @@
 import expect from 'expect';
 
-import fetchUsers from '../../redux-base/sagas/fetchUsers';
+import fetchUsers from 'redux-base/sagas/fetchUsers';
 import { put, call, fork } from 'redux-saga/effects';
 import api from 'utils/apiService';
-import * as actions from '../../redux-base/actions';
-import fetchFollowersCount from '../../redux-base/sagas/fetchFollowersCount';
+import * as actions from 'redux-base/actions';
+import fetchFollowersCount from 'redux-base/sagas/fetchFollowersCount';
 
 describe('fetchUsers saga', () => {
   const language = 'java';
