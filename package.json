@@ -8,7 +8,7 @@
     "build": "npm run clean && npm run build:webpack",
     "start": "npm run clean && node devServer.js",
     "lint": "eslint src",
-    "test:webpack-dev-server": "webpack-dev-server --config webpack.config.tests.js --rootLoader mocha!",
+    "test:webpack-dev-server": "webpack-dev-server --config webpack.config.tests.js --rootLoader mocha! --hot --inline",
     "test:webpack-bundle": "webpack --config webpack.config.tests.js --production",
     "test": "npm run test:webpack-bundle && mocha tests/build/bundle.js --require ./tests/setup.js",
     "test:browser": "open http://localhost:8080/webpack-dev-server/tests"
