@@ -1,64 +1,32 @@
-var path = require('path');
+var webpackConfigDev = require('./webpack.config.dev');
 var webpack = require('webpack');
 var argv = require('optimist').argv;
 
-var ROOT_PATH = path.resolve(__dirname);
-
+var webpackConfigTests = webpackConfigDev;
 // value - "mocha!" for tests in browser
 var rootLoader = argv.rootLoader || '';
 
-module.exports = {
-  entry: rootLoader + './tests/testsRoot.js',
-  resolve : {
-    extensions : ['', '.js', '.jsx', '.json'],
-    alias: {
-      'containers' : path.resolve(ROOT_PATH, './src/containers'),
-      'components' : path.resolve(ROOT_PATH, './src/components'),
-      'redux-base' : path.resolve(ROOT_PATH, './src/redux-base'),
-      'utils' : path.resolve(ROOT_PATH, './src/utils'),
-      'config' : path.resolve(ROOT_PATH, './src/config')
-    }
-  },
-  externals: {
-    jsdom: 'window',
-    // cheerio: 'window',
-    'react/lib/ExecutionEnvironment': true,
-    'react/lib/ReactContext': 'window',
-    'text-encoding': 'window'
-  },
-  output: {
-    path: 'tests/build/',
-    filename: 'bundle.js',
-    publicPath: '/tests'
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-  ],
-  module: {
-    preLoaders: [
-      {
-        test: /\.(js|jsx)$/,
-        loaders: ['eslint']
-      }
-    ],
-    loaders: [
-      {
-        test: /\.(js|jsx)$/,
-        loaders: ['babel'],
-        include: [
-          path.resolve(ROOT_PATH, 'src'),
-          path.resolve(ROOT_PATH, 'test')
-        ]
-      },
-      {
-        test: /\.scss$/,
-        loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap'
-      },
-      {
-        test: /\.json$/,
-        loader: 'null-loader'
-      }
-    ]
-  }
+webpackConfigTests.entry = rootLoader + './tests/testsRoot.js';
+
+webpackConfigTests.externals = {
+  'cheerio': 'window',
+  'react/addons': true,
+  'react/lib/ExecutionEnvironment': true,
+  'react/lib/ReactContext': true
 };
+
+webpackConfigTests.output = {
+  path: 'tests/build/',
+  filename: 'bundle.js',
+  publicPath: '/tests'
+};
+
+webpackConfigTests.module.loaders.forEach(function (item){
+  // remove react-hmre which wraps rendered component with <RedBox />
+  // we don't neeed this in tests, lets see all errors in mocha reporter
+  if (item.loader === 'babel') {
+    delete item.query.env;
+  }
+});
+
+module.exports = webpackConfigTests;

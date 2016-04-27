@@ -44,9 +44,18 @@ module.exports = {
     loaders: [
       {
         test: /\.(js|jsx)$/,
-        loaders: ['babel'],
-        include: path.resolve(ROOT_PATH, 'src'),
-        exclude: /node_modules/
+        loader: 'babel',
+        include: [
+          path.resolve(ROOT_PATH, 'src'),
+          path.resolve(ROOT_PATH, 'test')
+        ],
+        query: {
+          env: {
+            development: {
+              presets: ['react-hmre']
+            }
+          }
+        }
       },
       {
         test: /\.scss$/,
