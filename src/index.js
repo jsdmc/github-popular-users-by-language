@@ -1,38 +1,31 @@
 import 'babel-polyfill';
+
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router, browserHistory } from 'react-router';
+import { render } from 'react-dom';
 
-import { Provider } from 'react-redux';
+import Root from './containers/Root';
+import { AppContainer } from 'react-hot-loader';
+
 import configureStore from './redux-base/configureStore';
-import getRoutes from './routes';
-
-import config from 'config';
 
 const store = configureStore();
 
-let appRootComponent;
+render(
+  <AppContainer
+    component={Root}
+    props={{ store }}
+  />,
+  document.getElementById('root')
+);
 
-if (!config.isProduction) {
-	// Use require because imports can't be conditional.
-  // In production, you should ensure process.env.NODE_ENV
-  // is envified so that Uglify can eliminate this
-  // module and its dependencies as dead code.
-  const DevTools = require('utils/DevTools').default;
-  appRootComponent = () => (
-    <Provider store={store}>
-      <div>
-        <Router history={browserHistory} routes={getRoutes(store)}/>
-        <DevTools />
-      </div>
-    </Provider>
-  );
-} else {
-  appRootComponent = () => (
-    <Provider store={store}>
-      <Router history={browserHistory} routes={getRoutes(store)}/>
-    </Provider>
-  );
+if (module.hot) {
+  module.hot.accept('./containers/Root', () => {
+    render(
+      <AppContainer
+        component={require('./containers/Root').default}
+        props={{ store }}
+      />,
+      document.getElementById('root')
+    );
+  });
 }
-
-ReactDOM.render(appRootComponent(), document.getElementById('root'));

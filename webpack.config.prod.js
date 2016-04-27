@@ -8,7 +8,7 @@ module.exports = {
   // devtool: 'eval',
   entry: [
     './src/index.js',
-    // './src/index.html'
+    './src/index.html'
   ],
   resolve : {
     extensions : ['', '.js', '.jsx'],
@@ -55,14 +55,7 @@ module.exports = {
         include: [
           path.resolve(ROOT_PATH, 'src'),
           path.resolve(ROOT_PATH, 'test')
-        ],
-        query: {
-          env: {
-            development: {
-              presets: ['react-hmre']
-            }
-          }
-        }
+        ]
       },
       {
         test: /\.scss$/,

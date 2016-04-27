@@ -9,6 +9,7 @@ module.exports = {
     bundle: [
       'eventsource-polyfill', // necessary for hot reloading with IE
       'webpack-hot-middleware/client',
+      'react-hot-loader/patch',
       './src/index'
     ]
   },
@@ -48,14 +49,7 @@ module.exports = {
         include: [
           path.resolve(ROOT_PATH, 'src'),
           path.resolve(ROOT_PATH, 'test')
-        ],
-        query: {
-          env: {
-            development: {
-              presets: ['react-hmre']
-            }
-          }
-        }
+        ]
       },
       {
         test: /\.scss$/,

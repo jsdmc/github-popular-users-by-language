@@ -21,12 +21,4 @@ webpackConfigTests.output = {
   publicPath: '/tests'
 };
 
-webpackConfigTests.module.loaders.forEach(function (item){
-  // remove react-hmre which wraps rendered component with <RedBox />
-  // we don't neeed this in tests, lets see all errors in mocha reporter
-  if (item.loader === 'babel') {
-    delete item.query.env;
-  }
-});
-
 module.exports = webpackConfigTests;
